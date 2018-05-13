@@ -1,0 +1,10 @@
+/Users/leejinam/Study/netcore/csharp/bin/Debug/netcoreapp2.0/csharp.deps.json
+/Users/leejinam/Study/netcore/csharp/bin/Debug/netcoreapp2.0/csharp.runtimeconfig.json
+/Users/leejinam/Study/netcore/csharp/bin/Debug/netcoreapp2.0/csharp.runtimeconfig.dev.json
+/Users/leejinam/Study/netcore/csharp/bin/Debug/netcoreapp2.0/csharp.dll
+/Users/leejinam/Study/netcore/csharp/bin/Debug/netcoreapp2.0/csharp.pdb
+/Users/leejinam/Study/netcore/csharp/obj/Debug/netcoreapp2.0/csharp.csproj.CoreCompileInputs.cache
+/Users/leejinam/Study/netcore/csharp/obj/Debug/netcoreapp2.0/csharp.AssemblyInfoInputs.cache
+/Users/leejinam/Study/netcore/csharp/obj/Debug/netcoreapp2.0/csharp.AssemblyInfo.cs
+/Users/leejinam/Study/netcore/csharp/obj/Debug/netcoreapp2.0/csharp.dll
+/Users/leejinam/Study/netcore/csharp/obj/Debug/netcoreapp2.0/csharp.pdb
