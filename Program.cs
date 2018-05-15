@@ -217,6 +217,17 @@ namespace csharp
 
             isSorted = IsSorted(cancelllationPolicy.CancellationFeeRules);
             Console.WriteLine(isSorted);
+
+
+
+            MyButton btn = new MyButton();
+            btn.Click += new EventHandler(btn_Click);
+            btn.Text = "Run";
+        }
+
+        static void btn_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("clicked");
         }
 
         static bool IsSorted(List<CancellationFeeRule> feeRules)
