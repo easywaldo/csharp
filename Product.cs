@@ -1,4 +1,4 @@
-class Product
+public class Product
 {
     public string Name { get; private set; }
     public Product(string name)
@@ -9,5 +9,19 @@ class Product
     public override string ToString()
     {
         return this.Name;
+    }
+
+    public override bool Equals(object obj)
+    {
+        var product =  obj as Product;
+
+        if (product == null) return false;
+
+        if (product.Name != this.Name)
+        {
+            return true;
+        }
+
+        return true;
     }
 }

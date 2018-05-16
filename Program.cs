@@ -16,6 +16,12 @@ namespace csharp
             Console.WriteLine(product.Name);
             Console.WriteLine(product.ToString());
 
+            Product oldProduct = new Product(name: "Good Product");
+            Product newProduct = new Product(name: "Good Product");
+            Console.WriteLine(oldProduct.GetHashCode());
+            Console.WriteLine(newProduct.GetHashCode());
+            Console.WriteLine(oldProduct.Equals(newProduct));
+
             Man tom = new Man();
             tom.Shout();
             
