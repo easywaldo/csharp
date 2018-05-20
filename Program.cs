@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Diagnostics;
 
 namespace csharp
 {
@@ -224,11 +225,38 @@ namespace csharp
             isSorted = IsSorted(cancelllationPolicy.CancellationFeeRules);
             Console.WriteLine(isSorted);
 
-
-
             MyButton btn = new MyButton();
             btn.Click += new EventHandler(btn_Click);
             btn.Text = "Run";
+
+            Dictionary<int, string> levelOfStudents = new Dictionary<int, string>();
+            for (int i = 0; i < 500000; i++)
+            {
+                levelOfStudents.Add(i, Guid.NewGuid().ToString());
+            }
+            HashSet<int> studentList = new HashSet<int>();
+            for (int i = 0; i < 500000; i++)
+            {
+                studentList.Add(i);
+            }
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            string levelLiteral = string.Empty;
+            levelOfStudents.TryGetValue(45000, out levelLiteral);
+            if (levelLiteral != "")
+            {
+                watch.Stop();
+                Console.WriteLine("ElapsedMilliseconds : " + watch.ElapsedMilliseconds);
+            }
+            watch.Reset();
+            watch.Start();
+            int level = 0;
+            studentList.TryGetValue(45000, out level);
+            if (level != 0)
+            {
+                watch.Stop();
+                Console.WriteLine("ElapsedMilliseconds : " + watch.ElapsedMilliseconds);
+            }
         }
 
         static void btn_Click(object sender, EventArgs e)

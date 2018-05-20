@@ -1,0 +1,9 @@
+*.dll
+
+*.cache
+
+*.pdb
+
+bin/
+obj/
+.vscode/
