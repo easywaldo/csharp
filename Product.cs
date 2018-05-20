@@ -11,6 +11,11 @@ public class Product
         return this.Name;
     }
 
+    public override int GetHashCode()
+    {
+        return Name.GetHashCode();
+    }
+
     public override bool Equals(object obj)
     {
         var product =  obj as Product;
