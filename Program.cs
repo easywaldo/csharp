@@ -7,10 +7,27 @@ using System.Diagnostics;
 
 namespace csharp
 {
+    delegate int myDele (int x);
+
     class Program
     {
+        static int MySum(int number)
+        {
+            return number + number;
+        }
+        static int MyDouble (int x) => x * x;
         static void Main(string[] args)
         {
+            myDele f = MySum;
+            int numberResult = f(2);
+            Console.WriteLine(numberResult);
+            myDele f2 = MyDouble;
+            numberResult = f2(10);
+            numberResult = f2.Invoke(9);
+            Console.WriteLine(numberResult);
+            
+
+
             Console.WriteLine("Hello World!");
 
             Product product = new Product("bestGood");
@@ -59,8 +76,8 @@ namespace csharp
             IEnumerable<int> rangeNumList = Enumerable.Range(1, 100);
             foreach (int data in rangeNumList)
             {
-                Console.WriteLine(data);
-                Console.WriteLine(data.GetHashCode());
+                //Console.WriteLine(data);
+                //Console.WriteLine(data.GetHashCode());
             }
 
             // Pick 9 unique, random, numbers between 1..10 inclusive
@@ -102,14 +119,14 @@ namespace csharp
 
             foreach (Lecture lec in lectureList)
             {
-                Console.WriteLine($"lec id {lec.Id}  \n lec name {lec.Name} \n lec score {lec.Score}");
-                Console.WriteLine($"lec's hascode : {lec.GetHashCode()}");
+                //Console.WriteLine($"lec id {lec.Id}  \n lec name {lec.Name} \n lec score {lec.Score}");
+                //Console.WriteLine($"lec's hascode : {lec.GetHashCode()}");
             }
 
             foreach (Lecture lec in lecList)
             {
-                Console.WriteLine($"lec id {lec.Id}  \n lec name {lec.Name} \n lec score {lec.Score}");
-                Console.WriteLine($"lec's hascode : {lec.GetHashCode()}");
+                //Console.WriteLine($"lec id {lec.Id}  \n lec name {lec.Name} \n lec score {lec.Score}");
+                //Console.WriteLine($"lec's hascode : {lec.GetHashCode()}");
             }
 
             lecList.Clear();
@@ -125,8 +142,8 @@ namespace csharp
 
             foreach (Lecture lec in lecList)
             {
-                Console.WriteLine($"lec id {lec.Id}  \n lec name {lec.Name} \n lec score {lec.Score}");
-                Console.WriteLine($"lec's hascode : {lec.GetHashCode()}");
+                //Console.WriteLine($"lec id {lec.Id}  \n lec name {lec.Name} \n lec score {lec.Score}");
+                //Console.WriteLine($"lec's hascode : {lec.GetHashCode()}");
             }
 
             Dictionary<string, string> dict = new Dictionary<string, string>();
@@ -143,14 +160,14 @@ namespace csharp
 
             foreach (int d in nList)
             {
-                Console.WriteLine(d);
+                //Console.WriteLine(d);
             }
 
             nList.Sort((int a, int b) => b.CompareTo(a));
 
             foreach (int d in nList)
             {
-                Console.WriteLine(d);
+                //Console.WriteLine(d);
             }
 
             lecList.Clear();
@@ -171,13 +188,13 @@ namespace csharp
             });
             foreach (Lecture lec in lecList)
             {
-                Console.WriteLine($"lec id {lec.Id}  \n lec name {lec.Name} \n lec score {lec.Score}");
+                //Console.WriteLine($"lec id {lec.Id}  \n lec name {lec.Name} \n lec score {lec.Score}");
             }
             Console.WriteLine("OrderBy And ThenBy");
             lecList.OrderBy(x => x.Score).ThenBy(x => x.Name);
             foreach (Lecture lec in lecList)
             {
-                Console.WriteLine($"lec id {lec.Id}  \n lec name {lec.Name} \n lec score {lec.Score}");
+                //Console.WriteLine($"lec id {lec.Id}  \n lec name {lec.Name} \n lec score {lec.Score}");
             }
 
 
@@ -257,6 +274,36 @@ namespace csharp
                 watch.Stop();
                 Console.WriteLine("ElapsedMilliseconds : " + watch.ElapsedMilliseconds);
             }
+
+            int.TryParse("100", out int resultParse);
+            Console.WriteLine(resultParse);
+
+            int.TryParse("209", out var resultNumber);
+            Console.WriteLine(resultNumber);
+
+            var expression = new {
+                Name = "Tome",
+                Age = 10,
+                Id = Guid.NewGuid(),
+            };
+            Console.WriteLine(expression.Name.GetType().Name);
+            
+            var myList = new {
+                Items = new[] { new { Id = Guid.NewGuid(), Name = "Tom" }, new { Id = Guid.NewGuid(), Name = "John" }, new { Id = Guid.NewGuid(), Name = "Bob" }, new { Id = Guid.NewGuid(), Name = "John" }, new { Id = Guid.NewGuid(), Name = "Patrick" } },
+            };
+            var resultLinq = from item in myList.Items
+            where item.Name == "John"
+            select item.Id;
+
+            Console.WriteLine(resultLinq.Count());
+            
+
+            
+
+
+
+
+
         }
 
         static void btn_Click(object sender, EventArgs e)
