@@ -293,12 +293,14 @@ namespace csharp
             Console.WriteLine(resultLinq.Count());
 
 
+            // Action Delegate
             Action<int> myAct1 = delegate (int num)
             {
                 Console.WriteLine(num * 200);
             };
             myAct1(10);
 
+            // Action Lamda
             Action<int> myAct2 = (num) => Console.WriteLine(num * 300);
             myAct2(7);
 
@@ -320,6 +322,7 @@ namespace csharp
             };
 
 
+            // Switch Patteren Matching
             object[] data = { 1, null, 10, new Circle(5), new Man("Lee"), "", new Rect(98), };
 
             foreach (var item in data)
@@ -341,15 +344,36 @@ namespace csharp
                 }
             }
 
+            // Func , Predicate
+            Console.WriteLine(myFunc(100));
+            Console.WriteLine(myFunc2("hello", "jinam"));
+            Console.WriteLine(myPred("1001"));
+
             Console.WriteLine("TupleData : " + MyTuple(Enumerable.Range(1, 201).ToList()));
             (int sum, int count) =  MyTuple(Enumerable.Range(1, 201).ToList());
             Console.WriteLine($"Tuple Deconstruction \n sum: {sum} \n count: {count}");
             Console.WriteLine("Local Function : " + MyLocalFunction(81, 100));
+            
+            //Deconstruct
+            var studentNew = new Student("Brian", "Computer Science", "waldo@gmail.com");
+            var (name, dept, email, id) = studentNew;
+            Console.WriteLine($"name : {name} \n dept : {dept} \n email : {email} \n id : {id}");
+
+            // ref local
+            int numberA = 100;
+            ref int numberB = ref numberA;
+            numberB = 200;
+            Console.WriteLine($"numberA is {numberA}");
 
 
-            Console.WriteLine(myFunc(100));
-            Console.WriteLine(myFunc2("hello", "jinam"));
-            Console.WriteLine(myPred("1001"));
+            // ref return
+            int[] scores = new int[] { 90, 80, 100, 40, 56, 87, 100, 72, 60 };
+            ref int scoreData = ref studentNew.GetScore(scores, 2);
+            Console.WriteLine($"score data : {scoreData}");
+            scoreData = 90;
+            Console.WriteLine($"score data : {scoreData}");
+
+
             Console.ReadLine();
             
         }
