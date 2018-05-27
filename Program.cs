@@ -318,8 +318,15 @@ namespace csharp
                 return $"{s1} : {s2}";
             };
 
+
+            Predicate<string> myPred = (s) =>
+            {
+                return int.TryParse(s, out int number);
+            };
+            
             Console.WriteLine(myFunc(100));
             Console.WriteLine(myFunc2("hello", "jinam"));
+            Console.WriteLine(myPred("1001"));
             Console.ReadLine();
             
 
