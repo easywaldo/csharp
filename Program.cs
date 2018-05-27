@@ -40,7 +40,7 @@ namespace csharp
             Console.WriteLine(newProduct.GetHashCode());
             Console.WriteLine(oldProduct.Equals(newProduct));
 
-            Man tom = new Man();
+            Man tom = new Man("tom");
             tom.Shout();
             
             Random random = new Random();
@@ -74,11 +74,6 @@ namespace csharp
             }
 
             IEnumerable<int> rangeNumList = Enumerable.Range(1, 100);
-            foreach (int data in rangeNumList)
-            {
-                //Console.WriteLine(data);
-                //Console.WriteLine(data.GetHashCode());
-            }
 
             // Pick 9 unique, random, numbers between 1..10 inclusive
             List<int> values = rangeNumList.ToList();
@@ -323,15 +318,54 @@ namespace csharp
             {
                 return int.TryParse(s, out int number);
             };
-            
+
+
+            object[] data = { 1, null, 10, new Circle(5), new Man("Lee"), "", new Rect(98), };
+
+            foreach (var item in data)
+            {
+                switch(item)
+                {
+                    case null:
+                        Console.WriteLine("null");
+                        break;
+                    case Circle c:
+                        Console.WriteLine($"{c} is Circle");
+                        break;
+                    case Man m:
+                        Console.WriteLine($"{m} is Man");
+                        break;
+                    case Rect re:
+                        Console.WriteLine($"{re} is Rect");
+                        break;
+                }
+            }
+
+            Console.WriteLine("TupleData : " + MyTuple(Enumerable.Range(1, 201).ToList()));
+            (int sum, int count) =  MyTuple(Enumerable.Range(1, 201).ToList());
+            Console.WriteLine($"Tuple Deconstruction \n sum: {sum} \n count: {count}");
+            Console.WriteLine("Local Function : " + MyLocalFunction(81, 100));
+
+
             Console.WriteLine(myFunc(100));
             Console.WriteLine(myFunc2("hello", "jinam"));
             Console.WriteLine(myPred("1001"));
             Console.ReadLine();
             
+        }
 
+        static int MyLocalFunction(int number, int number2)
+        {
+            return number + MyFormula(number);
+            int MyFormula(int n)
+            {
+                return n.GetHashCode() % 2 + number2;
+            }
+        }
 
-
+        static (int, int)MyTuple(List<int> numberList)
+        {
+            return (numberList.Sum(), numberList.Count);
         }
 
         static void btn_Click(object sender, EventArgs e)
