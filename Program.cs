@@ -296,11 +296,32 @@ namespace csharp
             select item.Id;
 
             Console.WriteLine(resultLinq.Count());
+
+
+            Action<int> myAct1 = delegate (int num)
+            {
+                Console.WriteLine(num * 200);
+            };
+            myAct1(10);
+
+            Action<int> myAct2 = (num) => Console.WriteLine(num * 300);
+            myAct2(7);
+
+
+            Func<int, int> myFunc = (num) =>
+            {
+                return num * 2;
+            };
+
+            Func<string, string, string> myFunc2 = (s1, s2) =>
+            {
+                return $"{s1} : {s2}";
+            };
+
+            Console.WriteLine(myFunc(100));
+            Console.WriteLine(myFunc2("hello", "jinam"));
+            Console.ReadLine();
             
-
-            
-
-
 
 
 
