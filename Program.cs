@@ -298,13 +298,41 @@ namespace csharp
             Console.WriteLine(resultLinq.Count());
             
 
+            var children = new Child();
+            children.Say();
+            children.Move();
+
+            var parent = children as Parent;
+            parent.Say();
+            parent.Move();
             
+            var child = parent as Child;
+            child.Say();
+            child.Move();
 
 
+            int numA = int.MaxValue;
+            Console.WriteLine(numA + 1);
+            Console.WriteLine(unchecked(numA + 1));
+
+            Algorithm month = new Algorithm();
+            DateTime ddd = new DateTime(2016, 12,22);
+            Console.WriteLine(ddd.DayOfYear);
+            Console.WriteLine(month.GetDay(12, 22));
+            Console.WriteLine(ddd.DayOfWeek);
 
 
-
+            // DateTime firstDate = new DateTime(2016, 1, 1);
+            // for (int i = 1; i <= 366; i++)
+            // {
+            //     if (month.GetDay(firstDate.Month, firstDate.Day) != firstDate.DayOfWeek.ToString("").Substring(0, 3).ToUpper())
+            //     {
+            //         Console.WriteLine($"{firstDate} {firstDate.DayOfWeek} / {month.GetDay(firstDate.Month, firstDate.Day)} error");
+            //     }
+            //     firstDate = firstDate.AddDays(1);
+            // }
         }
+
 
         static void btn_Click(object sender, EventArgs e)
         {
