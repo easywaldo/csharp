@@ -316,21 +316,20 @@ namespace csharp
             Console.WriteLine(unchecked(numA + 1));
 
             Algorithm month = new Algorithm();
-            DateTime ddd = new DateTime(2016, 12,22);
-            Console.WriteLine(ddd.DayOfYear);
-            Console.WriteLine(month.GetDay(12, 22));
-            Console.WriteLine(ddd.DayOfWeek);
+            DateTime ddd = new DateTime(2016, 7, 22);
+            Console.WriteLine(month.GetDay(7, 22));
 
 
-            // DateTime firstDate = new DateTime(2016, 1, 1);
-            // for (int i = 1; i <= 366; i++)
-            // {
-            //     if (month.GetDay(firstDate.Month, firstDate.Day) != firstDate.DayOfWeek.ToString("").Substring(0, 3).ToUpper())
-            //     {
-            //         Console.WriteLine($"{firstDate} {firstDate.DayOfWeek} / {month.GetDay(firstDate.Month, firstDate.Day)} error");
-            //     }
-            //     firstDate = firstDate.AddDays(1);
-            // }
+            DateTime firstDate = new DateTime(2016, 1, 1);
+            for (int i = 1; i <= 366; i++)
+            {
+                if (month.GetDay(firstDate.Month, firstDate.Day) != firstDate.DayOfWeek.ToString("").Substring(0, 3).ToUpper())
+                {
+                    Console.WriteLine($"{firstDate} {firstDate.DayOfWeek} / {month.GetDay(firstDate.Month, firstDate.Day)} error");
+                }
+                firstDate = firstDate.AddDays(1);
+            }
+            Console.ReadLine();
         }
 
 
