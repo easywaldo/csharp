@@ -6,6 +6,11 @@ namespace csharp
 
         public bool isAlive = true;
 
+        public Man(string name)
+        {
+            this.name = name;
+        }
+
         public override void Shout()
         {
             System.Console.WriteLine("man");

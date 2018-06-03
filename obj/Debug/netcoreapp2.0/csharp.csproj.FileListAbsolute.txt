@@ -13,7 +13,6 @@ C:\Users\easyrosie\Study\csharp\bin\Debug\netcoreapp2.0\csharp.runtimeconfig.jso
 C:\Users\easyrosie\Study\csharp\bin\Debug\netcoreapp2.0\csharp.runtimeconfig.dev.json
 C:\Users\easyrosie\Study\csharp\bin\Debug\netcoreapp2.0\csharp.dll
 C:\Users\easyrosie\Study\csharp\bin\Debug\netcoreapp2.0\csharp.pdb
-C:\Users\easyrosie\Study\csharp\obj\Debug\netcoreapp2.0\csharp.csprojResolveAssemblyReference.cache
 C:\Users\easyrosie\Study\csharp\obj\Debug\netcoreapp2.0\csharp.csproj.CoreCompileInputs.cache
 C:\Users\easyrosie\Study\csharp\obj\Debug\netcoreapp2.0\csharp.AssemblyInfoInputs.cache
 C:\Users\easyrosie\Study\csharp\obj\Debug\netcoreapp2.0\csharp.AssemblyInfo.cs
