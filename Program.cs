@@ -382,10 +382,63 @@ namespace csharp
             Console.WriteLine(myFunc2("hello", "jinam"));
             Console.WriteLine(myPred("1001"));
 
+            // Tuple
             Console.WriteLine("TupleData : " + MyTuple(Enumerable.Range(1, 201).ToList()));
             (int sum, int count) =  MyTuple(Enumerable.Range(1, 201).ToList());
             Console.WriteLine($"Tuple Deconstruction \n sum: {sum} \n count: {count}");
             Console.WriteLine("Local Function : " + MyLocalFunction(81, 100));
+            
+
+            // Tuple 7 LeftNamed
+            (int count, string label) leftNamedTupleCsharp7 = (98, "myTuple");
+            Console.WriteLine($"count: {leftNamedTupleCsharp7.count} label: {leftNamedTupleCsharp7.label}");
+
+            // Tuple 7 RightNamed
+            var rightNamedTupleCsharp7 = (myCount: 100, myLabel: "myTuple");
+            Console.WriteLine($"count: {rightNamedTupleCsharp7.myCount} label: {rightNamedTupleCsharp7.myLabel}");
+
+            // defines the type returned
+            Func<IEnumerable<int>, (int Min, int Max)> minMaxFunc = (numbers) => {
+                int min = int.MaxValue;
+                int max = int.MinValue;
+                foreach(var n in numbers)
+                {
+                    min = (n < min) ? n : min;
+                    max = (n > max) ? n : max;
+                }
+                return (min, max);
+            };
+
+            // return tuple
+            var range = minMaxFunc(Enumerable.Range(1, 100));
+            Console.WriteLine($"range's min value is {range.Min} and max valud is {range.Max}");
+
+            // unpackage the members of a tuple
+            (int minValue, int maxValue) = minMaxFunc(Enumerable.Range(1, 500));
+            Console.WriteLine($"range's minValue is {minValue} and maxValue is {maxValue}");
+
+            // discards value
+            var (_, maxValueAfterDiscards) = minMaxFunc(Enumerable.Range(0, 1000));
+            Console.WriteLine($"maxValue is {maxValueAfterDiscards}");
+            
+            // Tuple 7.1 Inferred tuple element names
+            int tupleCount = 10;
+            string tupleLabel = "myTuple";
+            var pair = (tupleCount, tupleLabel);
+            Console.WriteLine($"count: {pair.tupleCount} label: {pair.tupleLabel}");
+            Console.WriteLine($"{pair.tupleCount.GetType().Name}, {pair.tupleLabel.GetType().Name}");
+
+
+
+            var pairByanonymousType = new 
+            {
+                count = 10,
+                label = "label",
+            };
+            Console.WriteLine($"count: {pairByanonymousType.count} label: {pairByanonymousType.label}");
+
+
+
             
             //Deconstruct
             var studentNew = new Student("Brian", "Computer Science", "waldo@gmail.com");
