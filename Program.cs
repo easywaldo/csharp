@@ -308,24 +308,7 @@ namespace csharp
             int numA = int.MaxValue;
             Console.WriteLine(numA + 1);
             Console.WriteLine(unchecked(numA + 1));
-
-            Algorithm month = new Algorithm();
-            DateTime ddd = new DateTime(2016, 12,22);
-            Console.WriteLine(ddd.DayOfYear);
-            Console.WriteLine(month.GetDay(12, 22));
-            Console.WriteLine(ddd.DayOfWeek);
-
-
-            // DateTime firstDate = new DateTime(2016, 1, 1);
-            // for (int i = 1; i <= 366; i++)
-            // {
-            //     if (month.GetDay(firstDate.Month, firstDate.Day) != firstDate.DayOfWeek.ToString("").Substring(0, 3).ToUpper())
-            //     {
-            //         Console.WriteLine($"{firstDate} {firstDate.DayOfWeek} / {month.GetDay(firstDate.Month, firstDate.Day)} error");
-            //     }
-            //     firstDate = firstDate.AddDays(1);
-            // }
-
+            
             // Action Delegate
             Action<int> myAct1 = delegate (int num)
             {
@@ -427,15 +410,29 @@ namespace csharp
             var pair = (tupleCount, tupleLabel);
             Console.WriteLine($"count: {pair.tupleCount} label: {pair.tupleLabel}");
             Console.WriteLine($"{pair.tupleCount.GetType().Name}, {pair.tupleLabel.GetType().Name}");
+            pair.tupleCount = 100;
+
+            // Change Elements value in Tuple
+            (int firstNumber ,int secondNumber) = (10, 50);
+            Console.WriteLine($"First is {firstNumber} and Second is {secondNumber}");
+            (secondNumber, firstNumber) = (firstNumber, secondNumber);
+            Console.WriteLine($"First is {firstNumber} and Second is {secondNumber}");
+            int firstNum = 10;
+            int secondNum = 200;
+            (secondNum, firstNum) = (firstNum, secondNum);
+            Console.WriteLine($"First is {firstNum} and Second is {secondNum}");
+
+            var tupleData = (1, 5, 6, 1);
+            Console.WriteLine(tupleData.Item1);
 
 
-
-            var pairByanonymousType = new 
+            var pairByAnonymousType = new 
             {
                 count = 10,
                 label = "label",
             };
-            Console.WriteLine($"count: {pairByanonymousType.count} label: {pairByanonymousType.label}");
+            Console.WriteLine($"count: {pairByAnonymousType.count} label: {pairByAnonymousType.label}");
+        
 
 
 
@@ -460,6 +457,21 @@ namespace csharp
             Console.WriteLine($"score data : {scoreData}");
 
 
+            Algorithm month = new Algorithm();
+
+            DateTime ddd = new DateTime(2016, 7, 22);
+            Console.WriteLine(month.GetDay(7, 22));
+
+
+            DateTime firstDate = new DateTime(2016, 1, 1);
+            for (int i = 1; i <= 366; i++)
+            {
+                if (month.GetDay(firstDate.Month, firstDate.Day) != firstDate.DayOfWeek.ToString("").Substring(0, 3).ToUpper())
+                {
+                    Console.WriteLine($"{firstDate} {firstDate.DayOfWeek} / {month.GetDay(firstDate.Month, firstDate.Day)} error");
+                }
+                firstDate = firstDate.AddDays(1);
+            }
             Console.ReadLine();
             
         }
