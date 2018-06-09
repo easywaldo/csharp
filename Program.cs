@@ -422,8 +422,8 @@ namespace csharp
             (secondNum, firstNum) = (firstNum, secondNum);
             Console.WriteLine($"First is {firstNum} and Second is {secondNum}");
 
-            var tupleData = (1, 5, 6, 1);
-            Console.WriteLine(tupleData.Item1);
+            var tupleData = (1, 5, 6, 1, 9, 1, 2, 4, 5, 6, 7, 11, 100, 56, 12, 18, 921, 1081, 23, 1, 23, 0);
+            Console.WriteLine(tupleData.Item22);
 
 
             var pairByAnonymousType = new 
