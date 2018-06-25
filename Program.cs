@@ -472,8 +472,44 @@ namespace csharp
                 }
                 firstDate = firstDate.AddDays(1);
             }
+
+            // dynamic data
+            var _commands = new List<dynamic>
+            {
+                new
+                {
+                    room_type_id = Guid.NewGuid(),
+                    date_conditions = new List<dynamic>
+                    {
+                        new
+                        {
+                            start_date = new DateTime(2018, 1, 1),
+                            end_date = new DateTime(2018, 1, 7),
+                            days_of_week = new string[] { "sunday", "monday", "friday" },
+                        },
+                        new
+                        {
+                            start_date = new DateTime(2018, 2, 8),
+                            end_date = new DateTime(2018, 2, 14),
+                            days_of_week = new string[] { "thursday", "saturday" },
+                        },
+                    },
+                    availibility = 100,
+                },
+            };
+
+            Console.WriteLine(_commands[0].room_type_id);
+            foreach (dynamic command in _commands)
+            {
+                foreach (dynamic dateCondition in command.date_conditions)
+                {
+                    Console.WriteLine(dateCondition.start_date);
+                    Console.WriteLine(dateCondition.end_date);
+                }
+            }
             Console.ReadLine();
-            
+
+
         }
 
         static int MyLocalFunction(int number, int number2)
