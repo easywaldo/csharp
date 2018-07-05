@@ -472,8 +472,12 @@ namespace csharp
                 }
                 firstDate = firstDate.AddDays(1);
             }
-            Console.ReadLine();
-            
+
+            Algorithm stringSort = new Algorithm();
+            Console.WriteLine(stringSort.GetSortedString("Zbcdefg"));
+
+
+            //Console.ReadLine();
         }
 
         static int MyLocalFunction(int number, int number2)

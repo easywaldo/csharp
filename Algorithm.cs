@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 public class Algorithm 
@@ -33,5 +34,46 @@ public class Algorithm
             default:
                 return "";
         }
+    }
+
+    public string GetLongestPelindrom(string data)
+    {
+        string pelindrom = string.Empty;
+        for (int i = 0; i < data.Length; i++)
+        {
+            pelindrom = data.Substring(0, i);
+            if (pelindrom.Length == 1) continue;
+            
+            string reverse = string.Empty;
+            for (int j = pelindrom.Length; j > 0; j--)
+            {
+
+            }
+        }
+        return "";
+    }
+
+    public string GetSortedString(string data)
+    {
+        char[] stringArray = data.ToCharArray();
+        for (int i = 0; i < data.Length; i++)
+        {
+            for (int j = i; j < data.Length; j++)
+            {
+                if(stringArray[i].CompareTo(stringArray[j]) < 0)
+                {
+                    char temp = stringArray[j];
+                    stringArray[j] = stringArray[i];
+                    stringArray[i] = temp;
+                }
+            }
+        }
+        string result = string.Empty;
+        foreach (char c in stringArray)
+        {
+            Console.WriteLine(c);
+            result += c.ToString();
+        }
+        return result;
     }
 }
