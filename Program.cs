@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Diagnostics;
+using System.Collections.Immutable;
 
 namespace csharp
 {
@@ -514,8 +515,41 @@ namespace csharp
                 }
             }
 
+            var builder = ImmutableArray.CreateBuilder<int>();
+            builder.Add(10);
+            builder.Add(20);
+            builder.Add(30);
+            var listImmutable = ImmutableArray.CreateRange(new List<int> { 100, 200, 300 });
+            ImmutableArray<int> array = builder.ToImmutable();
+
+            var numberListC = new List<int>{ 100, 200, 300 };
+            numberListC.ForEach(item => Console.WriteLine(item += 200));
+            foreach(var n in numberListC)
+            {
+                Console.WriteLine(n);
+            }
+
+            Func<int, int> fNumber = (number) =>
+            {
+                return number * 2;
+            };
+
+            fNumber(100);
+
+            var dNumber = myTestDelegate(func: fNumber, 100);
+            Console.WriteLine(dNumber);
             Console.ReadLine();
 
+        }
+
+        static int getDouble(int number)
+        {
+            return number * 2;
+        }
+
+        static int myTestDelegate(Func<int, int> func, int n)
+        {
+            return func(n) + 1000;
         }
 
         static int MyLocalFunction(int number, int number2)
