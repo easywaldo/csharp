@@ -538,7 +538,15 @@ namespace csharp
 
             var dNumber = myTestDelegate(func: fNumber, 100);
             Console.WriteLine(dNumber);
+
+            Algorithm aTest = new Algorithm("HelloWorld");
+            Console.Write(aTest.Name);
+            // aTest.Name = "test"; // error
+            
+
+
             Console.ReadLine();
+
 
         }
 

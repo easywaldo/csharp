@@ -3,6 +3,16 @@ using System.Collections.Generic;
 
 public class Algorithm 
 {
+    private string _Name;
+    public string Name => _Name;
+    private readonly Guid Id;
+
+    public Algorithm(
+        string name = "")
+    {
+        _Name = name;
+    }
+
     public string GetDay(int month, int day)
     {
         List<int> monthDaysList = new List<int> { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
