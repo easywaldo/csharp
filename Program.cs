@@ -542,17 +542,31 @@ namespace csharp
             Algorithm aTest = new Algorithm("HelloWorld");
             Console.Write(aTest.Name);
             // aTest.Name = "test"; // error
-            
 
+
+            // Tuple Compare
+            if (("Seoul", 1000) == ("Seoul", 1000))
+            {
+                Console.WriteLine("Same");
+            }
+            else
+            {
+                Console.WriteLine("Different");
+            }
+            
+            // ref and out both are passed as reference
+            int thirdNumber, forthNumber = 5;
+            getDouble(out thirdNumber, ref forthNumber);
+            Console.WriteLine(thirdNumber);
+            Console.WriteLine(forthNumber);
 
             Console.ReadLine();
-
-
         }
 
-        static int getDouble(int number)
+        static void getDouble(out int number, ref int secondNumer)
         {
-            return number * 2;
+            secondNumer = secondNumer * secondNumer;
+            number = secondNumer * 2;
         }
 
         static int myTestDelegate(Func<int, int> func, int n)
