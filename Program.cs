@@ -560,12 +560,21 @@ namespace csharp
             Console.WriteLine(thirdNumber);
             Console.WriteLine(forthNumber);
 
+
+            // ref return
+            var ns = new NumberStore();
+            ref var searchedNumber = ref ns.FindNumber(3);
+            Console.WriteLine(searchedNumber);
+            searchedNumber *= 2;
+            Console.WriteLine(searchedNumber);
+
             Console.ReadLine();
         }
 
         static void getDouble(out int number, ref int secondNumer)
         {
             secondNumer = secondNumer * secondNumer;
+            // out variable is write only
             number = secondNumer * 2;
         }
 
