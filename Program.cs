@@ -5,6 +5,9 @@ using System.Globalization;
 using System.Linq;
 using System.Diagnostics;
 using System.Collections.Immutable;
+using Newtonsoft.Json;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace csharp
 {
@@ -568,6 +571,27 @@ namespace csharp
             searchedNumber *= 2;
             Console.WriteLine(searchedNumber);
 
+
+            // Json Desializing
+            var file = Path.Combine("test.json");
+            var text = File.ReadAllText(file);
+            var result = Regex.Replace(text, @"\/\*[\s\S]*?\*\/|([^:|^""]|^)\/\/.*", "");
+            var json = JsonConvert.SerializeObject(result.Replace(@"\", ""));
+            //result.Replace(@"\", "")
+
+            var settings = new JsonSerializerSettings
+                    {
+                        NullValueHandling = NullValueHandling.Ignore,
+                        MissingMemberHandling = MissingMemberHandling.Ignore,
+                        MetadataPropertyHandling = MetadataPropertyHandling.Ignore
+                    };
+            var dResult = JsonConvert.DeserializeObject<AppSettings>(text.Replace("\n", "").Replace(@"\", ""), settings);
+            Console.WriteLine("UseTranspiling: " + dResult.UseTranspiling);
+            
+            StreamReader sr = new StreamReader(file);
+            string jsonString = sr.ReadToEnd();
+            //var ser = new JavaScriptSerializer();
+            var ro = JsonConvert.DeserializeObject<AppSettings>(jsonString);
             Console.ReadLine();
         }
 
