@@ -8,6 +8,7 @@ using System.Collections.Immutable;
 using Newtonsoft.Json;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Linq.Expressions;
 
 namespace csharp
 {
@@ -604,6 +605,28 @@ namespace csharp
             {
                 Console.WriteLine(n);
             }
+
+            Expression<Func<int, int>> addFive = (num) => num + 5;
+            if(addFive.NodeType == ExpressionType.Lambda)
+            {
+                var lambdaExp = (LambdaExpression)addFive;
+                var param = lambdaExp.Parameters.First();
+
+                Console.WriteLine(param.Name);
+                Console.WriteLine(param.Type);
+            }
+
+            var one = Expression.Constant(1, typeof(int));
+            var two = Expression.Constant(2, typeof(int));
+
+            var addtionResult = Expression.Add(one, two);
+            var subsResult = Expression.Subtract(one, two);
+            var multiplyResult = Expression.Multiply(one, two);
+
+            Console.WriteLine(addtionResult);
+            Console.WriteLine(subsResult);
+            Console.WriteLine(multiplyResult);
+
             Console.ReadLine();
         }
 
