@@ -154,7 +154,7 @@ namespace csharp
             Console.WriteLine(dict["tom"]);
 
             List<int> nList = new List<int> { 1, 10, 2, 5, 6, 8, 4, 3, 9, 7};
-            Comparer comparer = new Comparer(CultureInfo.CurrentCulture);
+            //Comparer comparer = new Comparer(CultureInfo.CurrentCulture);
             nList.Sort((int a, int b) => a.CompareTo(b));
 
             foreach (int d in nList)
@@ -547,7 +547,7 @@ namespace csharp
             // aTest.Name = "test"; // error
 
 
-            // Tuple Compare
+            // Tuple Compare 7.3
             if (("Seoul", 1000) == ("Seoul", 1000))
             {
                 Console.WriteLine("Same");
@@ -592,8 +592,23 @@ namespace csharp
             string jsonString = sr.ReadToEnd();
             //var ser = new JavaScriptSerializer();
             var ro = JsonConvert.DeserializeObject<AppSettings>(jsonString);
+
+            Comparison<string> comp = CompareLength;
+            Comparison<string> comparer = (left, right) => left.Length.CompareTo(right.Length);
+            var nameList = new List<string>
+            {
+                "tiger", "lion"
+            };
+            nameList.Sort(comparer);
+            foreach(var n in nameList)
+            {
+                Console.WriteLine(n);
+            }
             Console.ReadLine();
         }
+
+        static int CompareLength(string left, string right) =>
+            left.Length.CompareTo(right.Length);
 
         static void getDouble(out int number, ref int secondNumer)
         {
