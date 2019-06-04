@@ -623,6 +623,21 @@ namespace csharp
             var subsResult = Expression.Subtract(one, two);
             var multiplyResult = Expression.Multiply(one, two);
 
+            var myWishes = new List<WishList>()
+            {
+                new WishList { Name = "Swimming", Priority = 1 },
+                new WishList { Name = "Traveling Europe", Priority = 3 },
+                new WishList { Name = "Buying Car", Priority = 2 },
+                new WishList { Name = "Moving Apartment", Priority = 4 },
+            };
+
+            myWishes.Sort(new CompareWish());
+            foreach (var wish in myWishes)
+            {
+                Console.WriteLine(wish.Name);
+            }
+
+
             Console.WriteLine(addtionResult);
             Console.WriteLine(subsResult);
             Console.WriteLine(multiplyResult);
