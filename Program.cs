@@ -9,6 +9,8 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Linq.Expressions;
+using Microsoft.Azure.Cosmos;
+using Microsoft.Azure.Documents.Client;
 
 namespace csharp
 {
@@ -642,6 +644,18 @@ namespace csharp
             Console.WriteLine(subsResult);
             Console.WriteLine(multiplyResult);
 
+
+
+            /* Include this "using" directive...
+            using Microsoft.Azure.Documents.Client;
+            */
+
+            var cosmosUri = new Uri("https://8a649c4e-0ee0-4-231-b9ee.documents.azure.com:443/");
+            DocumentClient client = new DocumentClient(cosmosUri, "BjMViNLJLvmI6JMKRspTubsOmzw0falt9m1D70YjlQTWqejMs7qos8lzaFEO40aiojn93wogVvVt7A30diyu7Q==");
+            Uri documentUri = UriFactory.CreateDocumentUri("ToDoList", "Items", "student_001");
+            var todoItem = client.ReadDocumentAsync<ToDoItem>(documentUri);
+            var todoResult = todoItem.GetAwaiter().GetResult().Document;
+            Console.WriteLine(todoResult.Name);
             Console.ReadLine();
         }
 
