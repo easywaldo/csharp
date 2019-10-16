@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Diagnostics;
 using System.Collections.Immutable;
@@ -655,6 +654,22 @@ namespace csharp
             Uri documentUri = UriFactory.CreateDocumentUri("ToDoList", "Items", "student_001");
             var todoItem = client.ReadDocumentAsync<ToDoItem>(documentUri);
             var todoResult = todoItem.GetAwaiter().GetResult().Document;
+
+            // Create Database
+            var cosmosClient = new CosmosClient(
+                "https://8a649c4e-0ee0-4-231-b9ee.documents.azure.com:443/", 
+                "BjMViNLJLvmI6JMKRspTubsOmzw0falt9m1D70YjlQTWqejMs7qos8lzaFEO40aiojn93wogVvVt7A30diyu7Q==", 
+                new CosmosClientOptions()
+                {
+                    ApplicationRegion = Regions.EastUS2,
+                });
+
+            var database = client.CreateDatabaseAsync(
+                new Microsoft.Azure.Documents.Database
+                { 
+                    Id = "JohnDb" 
+                }).Result;
+
             Console.WriteLine(todoResult.Name);
             Console.ReadLine();
         }
