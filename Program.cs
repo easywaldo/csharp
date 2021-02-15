@@ -649,7 +649,7 @@ namespace csharp
             using Microsoft.Azure.Documents.Client;
             */
 
-            var cosmosUri = new Uri("https://8a649c4e-0ee0-4-231-b9ee.documents.azure.com:443/");
+            /* var cosmosUri = new Uri("https://8a649c4e-0ee0-4-231-b9ee.documents.azure.com:443/");
             DocumentClient client = new DocumentClient(cosmosUri, "BjMViNLJLvmI6JMKRspTubsOmzw0falt9m1D70YjlQTWqejMs7qos8lzaFEO40aiojn93wogVvVt7A30diyu7Q==");
             Uri documentUri = UriFactory.CreateDocumentUri("ToDoList", "Items", "student_001");
             var todoItem = client.ReadDocumentAsync<ToDoItem>(documentUri);
@@ -663,7 +663,7 @@ namespace csharp
                 {
                     ApplicationRegion = Regions.EastUS2,
                 });
-
+            
             var database = client.CreateDatabaseAsync(
                 new Microsoft.Azure.Documents.Database
                 { 
@@ -672,6 +672,39 @@ namespace csharp
 
             Console.WriteLine(todoResult.Name);
             Console.ReadLine();
+            System.DateTime.Now.ToString("yyyy-MM-dd hh:MM:ss").Substring(0, 2); */
+
+
+            // C# 7 - Patteren Matching
+            IEnumerable<Int32> numberList2 = Enumerable.Range(0, 10).AsEnumerable<Int32>();
+            int sumOfNumber = 1;
+            foreach (var n in numberList2)
+            {
+                switch(n)
+                {
+                    case Int32 greaterThan5 when greaterThan5 > 5:
+                        sumOfNumber *= n;
+                        break;
+                    case Int32 smallerThan3 when smallerThan3 < 3:
+                        sumOfNumber -= n;
+                        break;
+                }
+            }
+            Console.WriteLine(sumOfNumber);
+
+            // Define a provider and two observers.
+            Console.WriteLine("observable test...");
+            LocationTracker provider = new LocationTracker();
+            LocationReporter reporter1 = new LocationReporter("FixedGPS");
+            reporter1.Subscribe(provider);
+            LocationReporter reporter2 = new LocationReporter("MobileGPS");
+            reporter2.Subscribe(provider);
+
+            provider.TrackLocation(new Location(47.6456, -122.1312));
+            reporter1.Unsubscribe();
+            provider.TrackLocation(new Location(47.6677, -122.1199));
+            provider.TrackLocation(null);
+            provider.EndTransmission();
         }
 
         static int CompareLength(string left, string right) =>
